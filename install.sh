@@ -1,10 +1,13 @@
-#!/bin/bash
-set -ex
+#!/bin/sh
+set -e
 
-cat <<EOF
-----------------------------------------------
+echo "Activating feature 'deno'"
 
-               YOU ARE AWESOME!
+TARGET_DENO_VERSION=${VERSION:-"latest"}
 
-----------------------------------------------
-EOF
+if [ "${TARGET_DENO_VERSION}" = "latest" ] || "${TARGET_DENO_VERSION}" = "none";
+then
+    curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=/usr/local sh
+else
+    curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL=/usr/local sh -s "v${TARGET_DENO_VERSION}"
+fi
