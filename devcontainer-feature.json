@@ -1,7 +1,33 @@
 {
-  "id": "i-am-awesome",
-  "version": "0.1.0",
-  "name": "I am awesome",
-  "documentationURL": "https://github.com/octocat/i-am-awesome#readme",
-  "options": {}
+    "name": "Deno",
+    "id": "deno",
+    "version": "1.0.1",
+    "description": "Installs Deno",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "none",
+                "1.27.0",
+                "1.26.2",
+                "1.25.4",
+                "1.24.3"
+            ],
+            "default": "latest",
+            "description": "Select or enter a Deno version to install"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": { 
+				"deno.enable": true,
+				"deno.lint": true,
+				"editor.defaultFormatter": "denoland.vscode-deno"
+			},
+            "extensions": [
+                "denoland.vscode-deno"
+            ]
+        }
+    }
 }
