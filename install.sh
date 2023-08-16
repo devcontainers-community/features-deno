@@ -16,7 +16,7 @@ check_packages() {
     fi
 }
 
-check_packages curl unzip
+check_packages curl unzip ca-certificates
 
 echo "Activating feature 'deno'"
 
