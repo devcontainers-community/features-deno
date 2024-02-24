@@ -8,6 +8,7 @@ on:
       - README.md
       - .github/**
       - "!.github/workflows/test-feature.yml"
+      - .devcontainer/**
   pull_request:
     paths-ignore:
       - .gitignore
@@ -15,6 +16,7 @@ on:
       - README.md
       - .github/**
       - "!.github/workflows/test-feature.yml"
+      - .devcontainer/**
   workflow_call:
 
 concurrency:
