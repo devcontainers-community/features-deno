@@ -7,16 +7,20 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
 jobs:
+  test-feature:
+    uses: ./.github/workflows/test-feature.yml
   publish-feature:
+    needs:
+      - test-feature
     permissions:
       contents: read
       packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: docker/login-action@v2
+      - uses: devcontainers/action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: devcontainers-community/publish-feature@v1
+          publish-features: "true"
+          base-path-to-features: "./src"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
